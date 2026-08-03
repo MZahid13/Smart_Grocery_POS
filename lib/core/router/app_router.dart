@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../features/dashboard/dashboard_screen.dart';
 import '../../features/products/products_screen.dart';
 import '../../features/billing/billing_screen.dart';
+import '../../features/billing/barcode_scanner_screen.dart';
 import '../../features/reports/reports_screen.dart';
 import '../../features/settings/settings_screen.dart';
 import '../../shared/widgets/home_shell.dart';
@@ -16,6 +17,12 @@ final routerProvider = Provider<GoRouter>((ref) {
     navigatorKey: _rootNavigatorKey,
     initialLocation: '/dashboard',
     routes: [
+      // Full-screen route (no bottom nav) for the barcode scanner
+      GoRoute(
+        path: '/scan',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const BarcodeScannerScreen(),
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return HomeShell(navigationShell: navigationShell);
