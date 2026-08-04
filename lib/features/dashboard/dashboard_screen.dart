@@ -114,6 +114,29 @@ class DashboardScreen extends ConsumerWidget {
               ],
             ),
 
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: _QuickActionButton(
+                    label: 'Customers',
+                    icon: Icons.people_outline,
+                    onTap: () => context.push('/customers'),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: _QuickActionButton(
+                    label: 'Suppliers',
+                    icon: Icons.local_shipping_outlined,
+                    onTap: () => context.push('/suppliers'),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(child: Container()),
+              ],
+            ),
+
             const SizedBox(height: 24),
 
             if (productNotifier.lowStockProducts.isNotEmpty) ...[

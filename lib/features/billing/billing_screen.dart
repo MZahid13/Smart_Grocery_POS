@@ -11,6 +11,7 @@ import '../../data/providers/cart_provider.dart';
 import '../../data/providers/customer_provider.dart';
 import '../../data/providers/invoice_provider.dart';
 import '../../data/providers/product_provider.dart';
+import 'invoice_view_screen.dart';
 
 class BillingScreen extends ConsumerStatefulWidget {
   const BillingScreen({super.key});
@@ -319,22 +320,10 @@ class _BillingScreenState extends ConsumerState<BillingScreen> {
 
     if (!context.mounted) return;
 
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: const Text('Payment Successful'),
-        content: Text(
-          'Invoice: $invoiceNumber\nAmount: ${_currency.format(grandTotal)}\nMethod: $_paymentMethod',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(ctx);
-              context.go('/dashboard');
-            },
-            child: const Text('Done'),
-          ),
-        ],
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => InvoiceViewScreen(invoice: invoice),
       ),
     );
   }

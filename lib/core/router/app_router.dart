@@ -6,6 +6,8 @@ import '../../features/dashboard/dashboard_screen.dart';
 import '../../features/products/products_screen.dart';
 import '../../features/billing/billing_screen.dart';
 import '../../features/billing/barcode_scanner_screen.dart';
+import '../../features/customers/customers_screen.dart';
+import '../../features/suppliers/suppliers_screen.dart';
 import '../../features/reports/reports_screen.dart';
 import '../../features/settings/settings_screen.dart';
 import '../../shared/widgets/home_shell.dart';
@@ -17,11 +19,21 @@ final routerProvider = Provider<GoRouter>((ref) {
     navigatorKey: _rootNavigatorKey,
     initialLocation: '/dashboard',
     routes: [
-      // Full-screen route (no bottom nav) for the barcode scanner
+      // Full-screen routes (no bottom nav)
       GoRoute(
         path: '/scan',
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const BarcodeScannerScreen(),
+      ),
+      GoRoute(
+        path: '/customers',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const CustomersScreen(),
+      ),
+      GoRoute(
+        path: '/suppliers',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const SuppliersScreen(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
